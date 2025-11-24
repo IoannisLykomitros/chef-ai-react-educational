@@ -1,9 +1,10 @@
 import { useState } from 'react'
+import Header from './components/Header.jsx'
 
 function App() {
   return (
     <>
-      <h1>Chef AI</h1>
+      <Header />
     </>
   )
 }
