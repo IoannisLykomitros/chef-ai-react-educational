@@ -14,7 +14,7 @@ export async function getRecipeFromOpenAI(ingredientsArr) {
 
   const response = await openai.chat.completions.create({
     model: "gpt-5.1", 
-    max_tokens: 1024,
+    max_completion_tokens: 1024,
     messages: [
       { role: "system", content: SYSTEM_PROMPT },
       { role: "user", content: `I have ${ingredientsString}. Please give me a recipe you'd recommend I make!` },
