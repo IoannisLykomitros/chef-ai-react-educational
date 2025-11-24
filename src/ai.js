@@ -13,7 +13,7 @@ export async function getRecipeFromOpenAI(ingredientsArr) {
   const ingredientsString = ingredientsArr.join(", ");
 
   const response = await openai.chat.completions.create({
-    model: "gpt-4", 
+    model: "gpt-5.1", 
     max_tokens: 1024,
     messages: [
       { role: "system", content: SYSTEM_PROMPT },
