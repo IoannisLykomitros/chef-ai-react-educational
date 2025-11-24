@@ -4,7 +4,7 @@ import Recipe from './Recipe';
 import { getRecipeFromOpenAI } from '../ai';
 
 const Main = () => {
-    const [ingredients, setIngredients] = useState(["tomato", "onion", "garlic", "basil"]);
+    const [ingredients, setIngredients] = useState([]);
     const [recipe, setRecipe] = useState("")
 
     async function getRecipe() {
@@ -36,8 +36,7 @@ const Main = () => {
                     getRecipe={getRecipe}
             />}
 
-            {/* <Recipe recipe={recipe} />   */}
-            <Recipe recipe={recipe} />  
+            {recipe && <Recipe recipe={recipe} />  }
         </main>
     );
 }
