@@ -110,6 +110,8 @@ ul.ingredients-list > li {
     flex-grow: 1;
     max-width: 560px;
     max-height: 120px;
+    margin-bottom: 60px;
+    margin-top: 56px;
 }
 
 .get-recipe-container h3 {
@@ -134,4 +136,16 @@ ul.ingredients-list > li {
     font-family: "Inter", sans-serif;
     font-size: 0.875rem;
     cursor: pointer;
+}
+
+.suggested-recipe-container {
+    color: #475467;
+    line-height: 28px;
+    font-size: 1.125rem;
+    font-weight: 400;
+    margin-top: 24px;
+}
+
+.suggested-recipe-container ul li, .suggested-recipe-container ol li {
+    margin-bottom: 8px;
 }

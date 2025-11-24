@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Header from './Header';
 import IngredientsList from './IngredientsList';
+import Recipe from './Recipe';
 
 const Main = () => {
     const [ingredient, setIngredient] = useState(["chicken", "all the main spices", "corn", "heavy cream", "pasta"]);
@@ -26,6 +27,8 @@ const Main = () => {
                 <IngredientsList 
                     ingredients={ingredient} 
             />}
+
+            <Recipe />
         </main>
     );
 }
