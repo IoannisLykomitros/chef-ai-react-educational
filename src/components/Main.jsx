@@ -22,7 +22,10 @@ const Main = () => {
                 <button>Add Ingredient</button>
             </form>
 
-            <IngredientsList ingredients={ingredient} />
+            {ingredient.length > 0 && 
+                <IngredientsList 
+                    ingredients={ingredient} 
+            />}
         </main>
     );
 }

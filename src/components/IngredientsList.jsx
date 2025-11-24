@@ -10,13 +10,13 @@ const IngredientsList = (props) => {
             <ul className="ingredients-list" aria-live="polite">
                 {IngredientsListItems}
             </ul>
-            <div className="get-recipe-container">
+            {props.ingredients.length > 3 && <div className="get-recipe-container">
                 <div>
                     <h3>Ready for a Recipe?</h3>
                     <p>Generate a recipe from your list of ingredients.</p>
                 </div>
                 <button>Get Recipe</button>
-            </div>
+            </div>}
         </section>
     );
 }
