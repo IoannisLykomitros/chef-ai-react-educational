@@ -1,14 +1,21 @@
 import { useState } from 'react';
-import Header from './Header';
 import IngredientsList from './IngredientsList';
 import Recipe from './Recipe';
+import { getRecipeFromOpenAI } from '../ai';
 
 const Main = () => {
-    const [ingredient, setIngredient] = useState(["chicken", "all the main spices", "corn", "heavy cream", "pasta"]);
+    const [ingredients, setIngredients] = useState([]);
+    const [recipe, setRecipe] = useState("")
+
+    async function getRecipe() {
+        const recipeMarkdown = await getRecipeFromOpenAI(ingredients)
+        setRecipe(recipeMarkdown)
+        console.log(recipeMarkdown)
+    }
 
     const addIngredient = (formData) => {
         const newIngredient = formData.get('ingredient');
-        setIngredient([...ingredient, newIngredient]);
+        setIngredients([...ingredients, newIngredient]);
     }
 
     return (
@@ -23,12 +30,13 @@ const Main = () => {
                 <button>Add Ingredient</button>
             </form>
 
-            {ingredient.length > 0 && 
+            {ingredients.length > 0 && 
                 <IngredientsList 
-                    ingredients={ingredient} 
+                    ingredients={ingredients} 
+                    getRecipe={getRecipe}
             />}
 
-            <Recipe />
+            {recipe && <Recipe recipe={recipe} />  }
         </main>
     );
 }
