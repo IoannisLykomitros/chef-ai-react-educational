@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import IngredientsList from './IngredientsList';
 import Recipe from './Recipe';
 import { getRecipeFromOpenAI } from '../ai';
@@ -6,6 +6,13 @@ import { getRecipeFromOpenAI } from '../ai';
 const Main = () => {
     const [ingredients, setIngredients] = useState([]);
     const [recipe, setRecipe] = useState("")
+    const recipeRef = useRef(null);
+
+    useEffect(() => {
+        if (recipe !== "" && recipeRef.current !== null) {
+            recipeRef.current.scrollIntoView({ behavior: 'smooth' });
+        }
+    }, [recipe]);
 
     async function getRecipe() {
         const recipeMarkdown = await getRecipeFromOpenAI(ingredients)
@@ -32,6 +39,7 @@ const Main = () => {
 
             {ingredients.length > 0 && 
                 <IngredientsList 
+                    ref={recipeRef}
                     ingredients={ingredients} 
                     getRecipe={getRecipe}
             />}
